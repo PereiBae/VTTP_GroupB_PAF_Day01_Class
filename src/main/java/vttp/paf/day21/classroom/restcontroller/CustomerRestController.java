@@ -20,7 +20,7 @@ public class CustomerRestController {
 
     @GetMapping("/{limit}+{offset}")
     public ResponseEntity<List<Customer>> getCustomers(@PathVariable int limit, @PathVariable int offset) {
-        List<Customer> customers = customerService.getAllCustomers(limit,offset);
+        List<Customer> customers = customerService.getCustomers(limit,offset);
         return ResponseEntity.ok().body(customers);
     }
 

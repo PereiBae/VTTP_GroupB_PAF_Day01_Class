@@ -16,7 +16,7 @@ public class CustomerRepository {
     @Autowired
     private JdbcTemplate template;
 
-    public List<Customer> getAllCustomers(final int limit, final int offset) {
+    public List<Customer> getCustomers(final int limit, final int offset) {
         List<Customer> customers = new ArrayList<>();
         SqlRowSet rs = template.queryForRowSet(sql.sql_getAllCustomers_LimitOffset,limit,offset);
         while (rs.next()) {
