@@ -2,7 +2,7 @@ package vttp.paf.day21.classroom.model;
 
 public class Customer {
     private int id;
-    private String name;
+    private String customer_name;
     private String email;
 
     public int getId() {
@@ -13,12 +13,12 @@ public class Customer {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getCustomer_name() {
+        return customer_name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCustomer_name(String customer_name) {
+        this.customer_name = customer_name;
     }
 
     public String getEmail() {

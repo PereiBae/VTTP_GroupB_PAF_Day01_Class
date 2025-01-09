@@ -17,4 +17,20 @@ public class CustomerService {
         return customerRepo.getCustomers(limit,offset);
     }
 
+    public List<Customer> getAllCustomers() {
+        return customerRepo.getAllCustomers();
+    }
+
+    public Customer getCustomer(int id) {
+        return customerRepo.getCustomerById(id);
+    }
+
+    public boolean deleteCustomerById(int id) {
+        return customerRepo.deleteCustomerById(id);
+    }
+
+    public boolean updateCustomerById(int id, Customer customer) {
+        return customerRepo.updateCustomerById(id ,customer);
+    }
+
 }

@@ -1,6 +1,7 @@
 package vttp.paf.day21.classroom.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Repository;
@@ -22,11 +23,41 @@ public class CustomerRepository {
         while (rs.next()) {
             Customer customer = new Customer();
             customer.setId(rs.getInt("id"));
-            customer.setName(rs.getString("customer_name"));
+            customer.setCustomer_name(rs.getString("customer_name"));
             customer.setEmail(rs.getString("email"));
             customers.add(customer);
         }
         return customers;
     }
 
+    public List<Customer> getAllCustomers() {
+        List<Customer> customers = new ArrayList<>();
+        SqlRowSet rowSet = template.queryForRowSet(sql.sql_getAllCustomers);
+        while (rowSet.next()) {
+            Customer customer = new Customer();
+            customer.setId(rowSet.getInt("id"));
+            customer.setCustomer_name(rowSet.getString("customer_name"));
+            customer.setEmail(rowSet.getString("email"));
+            customers.add(customer);
+        }
+        return customers;
+    }
+
+    public Customer getCustomerById(final int id) {
+        return template.queryForObject(sql.sql_getCustomers_ById, BeanPropertyRowMapper.newInstance(Customer.class), id);
+    }
+
+    public boolean deleteCustomerById(final int id) {
+        int customerDeleted = template.update(sql.sql_deleteCustomerById, id);
+
+        return customerDeleted > 0;
+    }
+
+    public boolean updateCustomerById(final int id, final Customer customer) {
+        int customerUpdated = template.update(sql.sql_updateCustomerById, customer.getCustomer_name(), customer.getEmail(), id);
+        if (customerUpdated > 0) {
+            return true;
+        }
+        return false;
+    }
 }

@@ -2,12 +2,12 @@ package vttp.paf.day21.classroom.model;
 
 public class Room {
     private int id;
-    private String type;
+    private String room_type;
     private float price;
 
-    public Room(int id, String type, float price) {
+    public Room(int id, String room_type, float price) {
         this.id = id;
-        this.type = type;
+        this.room_type = room_type;
         this.price = price;
     }
 
@@ -22,12 +22,12 @@ public class Room {
         this.id = id;
     }
 
-    public String getType() {
-        return type;
+    public String getRoom_type() {
+        return room_type;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setRoom_type(String room_type) {
+        this.room_type = room_type;
     }
 
     public float getPrice() {
