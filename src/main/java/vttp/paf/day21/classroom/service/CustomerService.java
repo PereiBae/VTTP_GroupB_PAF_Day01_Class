@@ -13,8 +13,8 @@ public class CustomerService {
     @Autowired
     private CustomerRepository customerRepo;
 
-    public List<Customer> getAllCustomers() {
-        return customerRepo.getAllCustomers();
+    public List<Customer> getAllCustomers(int limit, int offset) {
+        return customerRepo.getAllCustomers(limit,offset);
     }
 
 }

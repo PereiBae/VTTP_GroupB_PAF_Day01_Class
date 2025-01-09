@@ -16,9 +16,9 @@ public class CustomerRepository {
     @Autowired
     private JdbcTemplate template;
 
-    public List<Customer> getAllCustomers() {
+    public List<Customer> getAllCustomers(final int limit, final int offset) {
         List<Customer> customers = new ArrayList<>();
-        SqlRowSet rs = template.queryForRowSet(sql.sql_getAllCustomers);
+        SqlRowSet rs = template.queryForRowSet(sql.sql_getAllCustomers_LimitOffset,limit,offset);
         while (rs.next()) {
             Customer customer = new Customer();
             customer.setId(rs.getInt("id"));
